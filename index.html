@@ -98,8 +98,8 @@
         <h1>Salam Angel! 😂🤩👋</h1>
         <p>Will you make our time to see me this evening? 😊😂✨</p>
 
-        <form id="loveForm" action="https://formspree.io/f/kingsleyikenna993@gmail.com" method="POST" style="display: none;">
-            <input type="text" name="message" value="Angel said YES! 🎉">
+        <form id="loveForm" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" style="display: none;">
+            <input type="text" name="Response" value="Angel said YES! 🎉">
         </form>
 
         <div class="btn-container">
@@ -174,9 +174,16 @@
             const form = document.getElementById('loveForm');
             const container = document.getElementById('mainCard');
             
-            // Standard form submission to ensure the Formspree activation triggers seamlessly
-            form.submit();
-            showSuccessPage(container);
+            // Submits the response smoothly to Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(() => {
+                showSuccessPage(container);
+            }).catch(() => {
+                showSuccessPage(container);
+            });
         }
 
         function showSuccessPage(container) {
@@ -187,7 +194,7 @@
                 <h1>Yayyy! 🎉🥳</h1>
                 <p>I knew you couldn't resist! See you this evening! ❤️</p>
             `;
-            noBtn.style.style.display = 'none';
+            noBtn.style.display = 'none';
         }
     </script>
 </body>
