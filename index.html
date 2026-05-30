@@ -174,7 +174,6 @@
             const form = document.getElementById('loveForm');
             const container = document.getElementById('mainCard');
             
-            // Submits the response smoothly to Formspree
             fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
